@@ -10,7 +10,7 @@ router.get('/mockingpets', async (req, res) => {
         const pets = generateMockPets(10); 
         res.send({ status: "success", payload: pets });
     } catch (error) {
-        res.status(500).send({ status: "error", message: error.message });
+         res.status(500).send({ status: "error", message: error.message });
     }
 });
 
