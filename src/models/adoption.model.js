@@ -14,4 +14,4 @@ const adoptionSchema = new mongoose.Schema({
 
 })
 
-export const adoptionModel = mongoose.model("Adoption",adoptionSchema)
+export const adoptionModel = mongoose.model("Adoption", adoptionSchema)

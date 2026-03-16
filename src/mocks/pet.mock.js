@@ -1,17 +1,17 @@
-import {faker} from "@faker-js/faker"
+import { faker } from "@faker-js/faker"
 
-export const generateMockPets = (num)=>{
+export const generateMockPets = (num) => {
 
- const pets=[]
+ const pets = []
 
- for(let i=0;i<num;i++){
+ for (let i = 0; i < num; i++) {
 
   pets.push({
 
-   name:faker.animal.cat(),
-   specie:"cat",
-   birthDate:faker.date.past(),
-   adopted:false
+   name: faker.animal.cat(),
+   specie: "cat",
+   birthDate: faker.date.past(),
+   adopted: false
 
   })
 

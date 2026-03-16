@@ -12,4 +12,4 @@ const petSchema = new mongoose.Schema({
 
 })
 
-export const petModel = mongoose.model("Pet",petSchema)
+export const petModel = mongoose.model("Pet", petSchema)
