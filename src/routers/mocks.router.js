@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { generateMockUsers, generateMockPets } from '../utils/mocking.utils.js';
-import { userModel } from '../models/user.js';
-import { petModel } from '../models/pet.js';
+import { userModel } from '../models/user.model.js';
+import { petModel } from '../models/pet.model.js';
 
 const router = Router();
 
