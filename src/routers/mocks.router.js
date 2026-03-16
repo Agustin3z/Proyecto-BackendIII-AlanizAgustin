@@ -1,44 +1,52 @@
-import { Router } from 'express';
-import { generateMockUsers, generateMockPets } from '../utils/mocking.utils.js';
-import { userModel } from '../models/user.model.js';
-import { petModel } from '../models/pet.model.js';
+import {Router} from "express"
 
-const router = Router();
+import {generateMockUsers} from "../mocks/user.mock.js"
+import {generateMockPets} from "../mocks/pet.mock.js"
 
-router.get('/mockingpets', async (req, res) => {
-    try {
-        const pets = generateMockPets(10); 
-        res.send({ status: "success", payload: pets });
-    } catch (error) {
-         res.status(500).send({ status: "error", message: error.message });
-    }
-});
+import {userModel} from "../models/user.model.js"
+import {petModel} from "../models/pet.model.js"
 
-router.get('/mockingusers', async (req, res) => {
-    try {
-        const users = await generateMockUsers(50); // Genera 50 usuarios
-        res.send({ status: "success", payload: users });
-    } catch (error) {
-        res.status(500).send({ status: "error", message: error.message });
-    }
-});
+const router = Router()
 
-router.post('/generateData', async (req, res) => {
-    const { users = 0, pets = 0 } = req.body || {};
-    try {
-        const mockUsers = await generateMockUsers(users);
-        const mockPets = generateMockPets(pets);
+router.get("/mockingpets",(req,res)=>{
 
-        await userModel.insertMany(mockUsers);
-        await petModel.insertMany(mockPets);
+ const pets = generateMockPets(20)
 
-        res.send({ 
-            status: "success", 
-            message: `Insertados ${users} usuarios y ${pets} mascotas.` 
-        });
-    } catch (error) {
-        res.status(500).send({ status: "error", message: error.message });
-    }
-});
+ res.send({
+  status:"success",
+  payload:pets
+ })
 
-export default router;
+})
+
+router.get("/mockingusers",(req,res)=>{
+
+ const users = generateMockUsers(50)
+
+ res.send({
+  status:"success",
+  payload:users
+ })
+
+})
+
+router.post("/generateData", async (req,res)=>{
+
+ const {users=0, pets=0} = req.body
+
+ const mockUsers = generateMockUsers(users)
+ const mockPets = generateMockPets(pets)
+
+ await userModel.insertMany(mockUsers)
+ await petModel.insertMany(mockPets)
+
+ res.send({
+
+  status:"success",
+  message:"Data generated successfully"
+
+ })
+
+})
+
+export default router
