@@ -8,6 +8,7 @@ import { petModel } from "../models/pet.model.js"
 
 const router = Router()
 
+// mocking pets
 router.get("/mockingpets", (req, res) => {
 
  const pets = generateMockPets(20)
@@ -19,6 +20,7 @@ router.get("/mockingpets", (req, res) => {
 
 })
 
+// mocking users
 router.get("/mockingusers", (req, res) => {
 
  const users = generateMockUsers(50)
@@ -30,6 +32,7 @@ router.get("/mockingusers", (req, res) => {
 
 })
 
+// generate data
 router.post("/generateData", async (req, res) => {
 
  const { users = 0, pets = 0 } = req.body
